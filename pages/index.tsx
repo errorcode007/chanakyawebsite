@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
 import { m } from 'framer-motion'
 import SEOHead from '@/components/SEOHead'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import PracticeIcon from '@/components/PracticeIcon'
 import { siteInfo, practiceAreas, testimonials } from '@/lib/content'
+import { getFeaturedPosts, BlogPost } from '@/lib/blog'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,7 +48,15 @@ const stats = [
 const featuredAreas = practiceAreas.slice(0, 6)
 const featuredTestimonials = testimonials.slice(0, 3)
 
-export default function Home() {
+interface HomeProps {
+  latestPosts: BlogPost[]
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  return { props: { latestPosts: getFeaturedPosts(3) } }
+}
+
+export default function Home({ latestPosts }: HomeProps) {
   return (
     <>
       <SEOHead
@@ -221,6 +231,40 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link href="/testimonials" className="text-accent font-semibold hover:underline">
               Read All Reviews &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-heading font-bold text-primary mb-2 text-center">
+            Latest Legal Insights
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Stay informed with our latest articles on Indian law and legal rights.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="card block group h-full">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-medium">
+                    {post.category}
+                  </span>
+                  <span className="text-xs text-gray-400">{post.readingTime} min read</span>
+                </div>
+                <h3 className="text-lg font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
+                <span className="text-accent text-sm font-medium mt-3 inline-block">Read More &rarr;</span>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/blog" className="text-accent font-semibold hover:underline">
+              View All Articles &rarr;
             </Link>
           </div>
         </div>
