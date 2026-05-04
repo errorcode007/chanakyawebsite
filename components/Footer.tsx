@@ -8,9 +8,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-accent font-heading text-lg font-bold mb-4">{siteInfo.name}</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img
+                src={siteInfo.logo}
+                alt={siteInfo.name}
+                className="h-12 w-12 rounded-full object-cover bg-white"
+              />
+              <div>
+                <h3 className="text-accent font-heading text-lg font-bold leading-tight">{siteInfo.name}</h3>
+                <p className="text-gray-400 text-xs">{siteInfo.tagline}</p>
+              </div>
+            </div>
             <p className="text-sm leading-relaxed">
-              {siteInfo.tagline}. Providing quality legal services across Lucknow and Uttar Pradesh
+              Providing quality legal services across Lucknow and Uttar Pradesh
               with integrity, expertise, and client-focused advocacy.
             </p>
           </div>

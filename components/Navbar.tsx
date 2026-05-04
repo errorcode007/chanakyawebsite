@@ -27,10 +27,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-accent text-xl lg:text-2xl font-heading font-bold">
-              {siteInfo.name}
-            </span>
+          <Link href="/" className="flex items-center space-x-3">
+            <img
+              src={siteInfo.logo}
+              alt={siteInfo.name}
+              className="h-10 lg:h-14 w-10 lg:w-14 rounded-full object-cover bg-white"
+            />
+            <div className="hidden sm:block">
+              <span className="text-accent text-lg lg:text-xl font-heading font-bold leading-tight block">
+                {siteInfo.name}
+              </span>
+              <span className="text-gray-400 text-xs leading-tight block">
+                {siteInfo.tagline}
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}

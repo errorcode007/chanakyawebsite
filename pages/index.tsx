@@ -58,26 +58,40 @@ export default function Home() {
       <section className="bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
-          <m.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
-            <m.p variants={fadeInUp} className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
-              {siteInfo.tagline}
-            </m.p>
-            <m.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
-              {siteInfo.name}
-            </m.h1>
-            <m.p variants={fadeInUp} className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
-              Expert legal counsel across 18 practice areas. From civil litigation to criminal defence,
-              we protect your rights with integrity and dedication.
-            </m.p>
-            <m.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="btn-primary text-center">
-                Book Free Consultation
-              </Link>
-              <Link href="/practice-areas" className="btn-secondary text-center">
-                Our Services
-              </Link>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <m.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
+              <m.p variants={fadeInUp} className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
+                {siteInfo.tagline}
+              </m.p>
+              <m.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
+                {siteInfo.name}
+              </m.h1>
+              <m.p variants={fadeInUp} className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
+                Expert legal counsel across 18 practice areas. From civil litigation to criminal defence,
+                we protect your rights with integrity and dedication.
+              </m.p>
+              <m.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact" className="btn-primary text-center">
+                  Book Free Consultation
+                </Link>
+                <Link href="/practice-areas" className="btn-secondary text-center">
+                  Our Services
+                </Link>
+              </m.div>
             </m.div>
-          </m.div>
+            <m.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:block flex-shrink-0"
+            >
+              <img
+                src={siteInfo.logo}
+                alt={siteInfo.name}
+                className="w-64 h-64 rounded-full object-cover bg-white/10 shadow-2xl ring-4 ring-accent/30"
+              />
+            </m.div>
+          </div>
         </div>
       </section>
 
