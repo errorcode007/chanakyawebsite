@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import { siteInfo, teamMembers } from '@/lib/content'
 
 export default function Team() {
+  const { t } = useTranslation('team')
   return (
     <>
       <SEOHead
@@ -15,10 +17,9 @@ export default function Team() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumb items={[{ label: 'Our Team' }]} />
 
-        <h1 className="text-4xl font-heading font-bold text-primary mb-4">Our Advocates</h1>
+        <h1 className="text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h1>
         <p className="text-gray-600 text-lg mb-12 max-w-3xl">
-          Our team of dedicated legal professionals brings diverse expertise and a shared
-          commitment to achieving the best outcomes for our clients.
+          {t('subtitle')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl">

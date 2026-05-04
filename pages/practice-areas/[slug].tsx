@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
@@ -59,6 +60,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 }
 
 export default function PracticeAreaPage({ area, relatedAreas, relatedPosts }: Props) {
+  const { t } = useTranslation('practice-areas')
+  const { t: tc } = useTranslation('common')
   return (
     <>
       <SEOHead
@@ -96,13 +99,13 @@ export default function PracticeAreaPage({ area, relatedAreas, relatedPosts }: P
             {/* CTA */}
             <div className="mt-8 bg-primary/5 rounded-xl p-6">
               <h3 className="font-heading font-bold text-primary mb-2">
-                Need Help with {area.name}?
+                {t('detail.needHelp', { area: area.name })}
               </h3>
               <p className="text-gray-600 text-sm mb-4">
-                Schedule a consultation with our experienced advocates to discuss your case.
+                {t('detail.scheduleConsultation')}
               </p>
               <Link href="/contact" className="btn-primary inline-block">
-                Book Consultation
+                {tc('buttons.bookConsultation')}
               </Link>
             </div>
           </div>
@@ -113,7 +116,7 @@ export default function PracticeAreaPage({ area, relatedAreas, relatedPosts }: P
               {/* Related Blog Posts */}
               {relatedPosts.length > 0 && (
                 <div>
-                  <h3 className="font-heading font-bold text-primary mb-4">Related Articles</h3>
+                  <h3 className="font-heading font-bold text-primary mb-4">{t('detail.relatedArticles')}</h3>
                   <div className="space-y-3">
                     {relatedPosts.map((post) => (
                       <Link
@@ -133,7 +136,7 @@ export default function PracticeAreaPage({ area, relatedAreas, relatedPosts }: P
 
               {/* Related Services */}
               <div>
-                <h3 className="font-heading font-bold text-primary mb-4">Related Services</h3>
+                <h3 className="font-heading font-bold text-primary mb-4">{t('detail.relatedServices')}</h3>
                 <div className="space-y-3">
                   {relatedAreas.map((related) => (
                     <Link
@@ -152,7 +155,7 @@ export default function PracticeAreaPage({ area, relatedAreas, relatedPosts }: P
 
               {/* Contact Info */}
               <div className="bg-accent/10 rounded-xl p-6">
-                <h4 className="font-heading font-bold text-primary mb-2">Contact Us</h4>
+                <h4 className="font-heading font-bold text-primary mb-2">{t('detail.contactUs')}</h4>
                 <p className="text-sm text-gray-600 mb-2">{siteInfo.phone}</p>
                 <p className="text-sm text-gray-600 mb-2">{siteInfo.email}</p>
                 <p className="text-sm text-gray-600">{siteInfo.hours}</p>

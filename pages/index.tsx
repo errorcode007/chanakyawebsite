@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { m } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import PracticeIcon from '@/components/PracticeIcon'
@@ -111,6 +112,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 }
 
 export default function Home({ latestPosts }: HomeProps) {
+  const { t } = useTranslation('home')
+  const { t: tc } = useTranslation('common')
   return (
     <>
       <SEOHead
@@ -126,21 +129,20 @@ export default function Home({ latestPosts }: HomeProps) {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <m.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
               <m.p variants={fadeInUp} className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">
-                {siteInfo.tagline}
+                {t('hero.tagline')}
               </m.p>
               <m.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
-                {siteInfo.name}
+                {t('hero.title')}
               </m.h1>
               <m.p variants={fadeInUp} className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
-                Expert legal counsel across 18 practice areas. From civil litigation to criminal defence,
-                we protect your rights with integrity and dedication.
+                {t('hero.description')}
               </m.p>
               <m.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-primary text-center">
-                  Book Free Consultation
+                  {tc('buttons.bookFreeConsultation')}
                 </Link>
                 <Link href="/practice-areas" className="btn-secondary text-center">
-                  Our Services
+                  {tc('buttons.ourServices')}
                 </Link>
               </m.div>
             </m.div>
@@ -164,10 +166,15 @@ export default function Home({ latestPosts }: HomeProps) {
       <section className="bg-accent/10 border-y border-accent/20">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {stats.map((stat) => (
-              <div key={stat.label}>
+            {[
+              { value: '15+', labelKey: 'stats.yearsActive' },
+              { value: '18+', labelKey: 'stats.servicesOffered' },
+              { value: `${siteInfo.rating}★`, labelKey: 'stats.googleRating' },
+              { value: 'Lucknow', labelKey: 'stats.location' },
+            ].map((stat) => (
+              <div key={stat.labelKey}>
                 <p className="text-2xl md:text-3xl font-heading font-bold text-primary">{stat.value}</p>
-                <p className="text-sm text-gray-600 mt-1">{stat.label}</p>
+                <p className="text-sm text-gray-600 mt-1">{t(stat.labelKey)}</p>
               </div>
             ))}
           </div>
@@ -185,21 +192,17 @@ export default function Home({ latestPosts }: HomeProps) {
             className="max-w-3xl mx-auto text-center"
           >
             <m.h2 variants={fadeInUp} className="text-3xl font-heading font-bold text-primary mb-6">
-              About Our Chamber
+              {t('about.title')}
             </m.h2>
             <m.p variants={fadeInUp} className="text-gray-600 leading-relaxed mb-4">
-              Chanakya Legal Chamber has been serving clients across Lucknow and Uttar Pradesh with
-              dedicated legal representation. Our team of experienced advocates brings deep knowledge
-              of Indian law and the UP court system to every case we handle.
+              {t('about.para1')}
             </m.p>
             <m.p variants={fadeInUp} className="text-gray-600 leading-relaxed mb-8">
-              From complex corporate disputes to sensitive family matters, we approach every case with
-              the thoroughness and strategic thinking our clients deserve. Our commitment to integrity,
-              transparency, and results has earned us a 4.3-star Google rating.
+              {t('about.para2')}
             </m.p>
             <m.div variants={fadeInUp}>
               <Link href="/about" className="text-accent font-semibold hover:underline">
-                Read More About Us &rarr;
+                {t('about.readMore')} &rarr;
               </Link>
             </m.div>
           </m.div>
@@ -216,10 +219,10 @@ export default function Home({ latestPosts }: HomeProps) {
             variants={stagger}
           >
             <m.h2 variants={fadeInUp} className="text-3xl font-heading font-bold text-primary mb-2 text-center">
-              Our Practice Areas
+              {t('practiceAreas.title')}
             </m.h2>
             <m.p variants={fadeInUp} className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              We provide expert legal services across 18 specialized areas of law.
+              {t('practiceAreas.subtitle')}
             </m.p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredAreas.map((area) => (
@@ -234,7 +237,7 @@ export default function Home({ latestPosts }: HomeProps) {
             </div>
             <div className="text-center mt-8">
               <Link href="/practice-areas" className="text-accent font-semibold hover:underline">
-                View All 18 Practice Areas &rarr;
+                {t('practiceAreas.viewAll')} &rarr;
               </Link>
             </div>
           </m.div>
@@ -245,19 +248,19 @@ export default function Home({ latestPosts }: HomeProps) {
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-heading font-bold text-primary mb-12 text-center">
-            Why Choose Chanakya Legal Chamber
+            {t('whyChooseUs.title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: '⚖️', title: 'Experienced Advocates', desc: 'Our team brings decades of combined experience across UP courts and tribunals.' },
-              { icon: '🤝', title: 'Client-First Approach', desc: 'We prioritize your interests, keeping you informed at every stage of your case.' },
-              { icon: '📋', title: '18+ Practice Areas', desc: 'Comprehensive legal services under one roof, from civil to criminal to corporate law.' },
-              { icon: '🏆', title: '4.3★ Google Rating', desc: 'Our track record of results and client satisfaction speaks for itself.' },
+              { icon: '⚖️', titleKey: 'whyChooseUs.experienced.title', descKey: 'whyChooseUs.experienced.desc' },
+              { icon: '🤝', titleKey: 'whyChooseUs.clientFirst.title', descKey: 'whyChooseUs.clientFirst.desc' },
+              { icon: '📋', titleKey: 'whyChooseUs.practiceAreas.title', descKey: 'whyChooseUs.practiceAreas.desc' },
+              { icon: '🏆', titleKey: 'whyChooseUs.rating.title', descKey: 'whyChooseUs.rating.desc' },
             ].map((item) => (
-              <div key={item.title} className="text-center">
+              <div key={item.titleKey} className="text-center">
                 <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="text-lg font-heading font-bold text-primary mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <h3 className="text-lg font-heading font-bold text-primary mb-2">{t(item.titleKey)}</h3>
+                <p className="text-gray-600 text-sm">{t(item.descKey)}</p>
               </div>
             ))}
           </div>
@@ -268,7 +271,7 @@ export default function Home({ latestPosts }: HomeProps) {
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-heading font-bold text-primary mb-12 text-center">
-            What Our Clients Say
+            {t('testimonials.title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredTestimonials.map((t, i) => (
@@ -284,7 +287,7 @@ export default function Home({ latestPosts }: HomeProps) {
           </div>
           <div className="text-center mt-8">
             <Link href="/testimonials" className="text-accent font-semibold hover:underline">
-              Read All Reviews &rarr;
+              {t('testimonials.viewAll')} &rarr;
             </Link>
           </div>
         </div>
@@ -294,10 +297,10 @@ export default function Home({ latestPosts }: HomeProps) {
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-heading font-bold text-primary mb-2 text-center">
-            Latest Legal Insights
+            {t('blog.title')}
           </h2>
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Stay informed with our latest articles on Indian law and legal rights.
+            {t('blog.subtitle')}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
@@ -312,13 +315,13 @@ export default function Home({ latestPosts }: HomeProps) {
                   {post.title}
                 </h3>
                 <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
-                <span className="text-accent text-sm font-medium mt-3 inline-block">Read More &rarr;</span>
+                <span className="text-accent text-sm font-medium mt-3 inline-block">{tc('buttons.readMore')} &rarr;</span>
               </Link>
             ))}
           </div>
           <div className="text-center mt-8">
             <Link href="/blog" className="text-accent font-semibold hover:underline">
-              View All Articles &rarr;
+              {t('blog.viewAll')} &rarr;
             </Link>
           </div>
         </div>

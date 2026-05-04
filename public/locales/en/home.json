@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "tagline": "Lighting The Path To Justice",
+    "title": "Chanakya Legal Chamber",
+    "description": "Expert legal counsel across 18 practice areas. From civil litigation to criminal defence, we protect your rights with integrity and dedication."
+  },
+  "stats": {
+    "yearsActive": "Years Active",
+    "servicesOffered": "Services Offered",
+    "googleRating": "Google Rating",
+    "location": "Location"
+  },
+  "about": {
+    "title": "About Our Chamber",
+    "para1": "Chanakya Legal Chamber has been serving clients across Lucknow and Uttar Pradesh with dedicated legal representation. Our team of experienced advocates brings deep knowledge of Indian law and the UP court system to every case we handle.",
+    "para2": "From complex corporate disputes to sensitive family matters, we approach every case with the thoroughness and strategic thinking our clients deserve. Our commitment to integrity, transparency, and results has earned us a 4.3-star Google rating.",
+    "readMore": "Read More About Us"
+  },
+  "practiceAreas": {
+    "title": "Our Practice Areas",
+    "subtitle": "We provide expert legal services across 18 specialized areas of law.",
+    "viewAll": "View All 18 Practice Areas"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Chanakya Legal Chamber",
+    "experienced": {
+      "title": "Experienced Advocates",
+      "desc": "Our team brings decades of combined experience across UP courts and tribunals."
+    },
+    "clientFirst": {
+      "title": "Client-First Approach",
+      "desc": "We prioritize your interests, keeping you informed at every stage of your case."
+    },
+    "practiceAreas": {
+      "title": "18+ Practice Areas",
+      "desc": "Comprehensive legal services under one roof, from civil to criminal to corporate law."
+    },
+    "rating": {
+      "title": "4.3★ Google Rating",
+      "desc": "Our track record of results and client satisfaction speaks for itself."
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "viewAll": "Read All Reviews"
+  },
+  "blog": {
+    "title": "Latest Legal Insights",
+    "subtitle": "Stay informed with our latest articles on Indian law and legal rights.",
+    "viewAll": "View All Articles"
+  }
+}

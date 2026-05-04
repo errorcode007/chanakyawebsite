@@ -1,4 +1,5 @@
 import { m } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
@@ -10,6 +11,7 @@ const fadeInUp = {
 }
 
 export default function About() {
+  const { t } = useTranslation('about')
   return (
     <>
       <SEOHead
@@ -24,7 +26,7 @@ export default function About() {
         {/* Header */}
         <m.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
           <m.h1 variants={fadeInUp} className="text-4xl font-heading font-bold text-primary mb-6">
-            About Chanakya Legal Chamber
+            {t('title')}
           </m.h1>
 
           {/* History */}
@@ -52,7 +54,7 @@ export default function About() {
         {/* Mission & Values */}
         <section className="mb-16">
           <h2 className="text-3xl font-heading font-bold text-primary mb-8 text-center">
-            Our Values
+            {t('values.title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[

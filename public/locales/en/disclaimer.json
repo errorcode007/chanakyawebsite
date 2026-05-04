@@ -1,0 +1,16 @@
+{
+  "title": "Disclaimer",
+  "subtitle": "Important legal notices regarding the use of this website.",
+  "bciCompliance": {
+    "title": "Bar Council of India Compliance",
+    "content": "This website is meant solely for the purpose of information and not for the purpose of advertising. As per the rules of the Bar Council of India, advocates are not permitted to solicit work or advertise."
+  },
+  "noAdvice": {
+    "title": "No Legal Advice",
+    "content": "The information on this website does not constitute legal advice. You should not act or rely on any information contained in this website without seeking professional legal advice."
+  },
+  "noRelationship": {
+    "title": "No Advocate-Client Relationship",
+    "content": "Use of this website or contacting us through this website does not create an advocate-client relationship. An advocate-client relationship is only formed upon execution of a formal engagement letter."
+  }
+}

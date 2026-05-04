@@ -1,0 +1,12 @@
+{
+  "title": "Practice Areas",
+  "subtitle": "Comprehensive legal services across 18 specialized areas of law in Lucknow and Uttar Pradesh.",
+  "detail": {
+    "needHelp": "Need Help with {{area}}?",
+    "scheduleConsultation": "Schedule a consultation with our experienced advocates to discuss your case.",
+    "relatedArticles": "Related Articles",
+    "relatedServices": "Related Services",
+    "contactUs": "Contact Us",
+    "minRead": "{{time}} min read"
+  }
+}

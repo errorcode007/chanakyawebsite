@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
@@ -93,6 +94,8 @@ function ShareButtons({ title, slug }: { title: string; slug: string }) {
 }
 
 export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }: Props) {
+  const { t } = useTranslation('blog')
+  const { t: tc } = useTranslation('common')
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -162,7 +165,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
             {/* Share + Author */}
             <div className="mt-8 pt-8 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <p className="text-sm text-gray-500">
-                Published by <span className="font-medium text-primary">{siteInfo.name}</span>
+                {t('publishedBy')} <span className="font-medium text-primary">{siteInfo.name}</span>
               </p>
               <ShareButtons title={post.title} slug={post.slug} />
             </div>
@@ -171,7 +174,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
             <nav className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {prevPost ? (
                 <Link href={`/blog/${prevPost.slug}`} className="card p-4 group">
-                  <span className="text-xs text-gray-400 uppercase tracking-wide">Previous</span>
+                  <span className="text-xs text-gray-400 uppercase tracking-wide">{t('previous')}</span>
                   <p className="text-sm font-heading font-bold text-primary mt-1 group-hover:text-accent transition-colors line-clamp-2">
                     {prevPost.title}
                   </p>
@@ -179,7 +182,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
               ) : <div />}
               {nextPost && (
                 <Link href={`/blog/${nextPost.slug}`} className="card p-4 group text-right">
-                  <span className="text-xs text-gray-400 uppercase tracking-wide">Next</span>
+                  <span className="text-xs text-gray-400 uppercase tracking-wide">{t('next')}</span>
                   <p className="text-sm font-heading font-bold text-primary mt-1 group-hover:text-accent transition-colors line-clamp-2">
                     {nextPost.title}
                   </p>
@@ -194,7 +197,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
               {/* Related Posts */}
               {relatedPosts.length > 0 && (
                 <div>
-                  <h3 className="font-heading font-bold text-primary mb-4">Related Articles</h3>
+                  <h3 className="font-heading font-bold text-primary mb-4">{t('relatedArticles')}</h3>
                   <div className="space-y-3">
                     {relatedPosts.map((related) => (
                       <Link
@@ -215,22 +218,22 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
 
               {/* Consultation CTA */}
               <div className="bg-primary rounded-xl p-6 text-white">
-                <h4 className="font-heading font-bold text-lg mb-2">Need Legal Advice?</h4>
+                <h4 className="font-heading font-bold text-lg mb-2">{t('needLegalAdvice')}</h4>
                 <p className="text-gray-300 text-sm mb-4">
-                  Schedule a consultation with our experienced advocates to discuss your case.
+                  {t('scheduleConsultation')}
                 </p>
                 <Link href="/contact" className="inline-block bg-accent text-primary font-semibold px-5 py-2.5 rounded-lg hover:bg-accent/90 transition-colors text-sm">
-                  Book Consultation
+                  {tc('buttons.bookConsultation')}
                 </Link>
                 <div className="mt-4 pt-4 border-t border-white/20">
-                  <p className="text-sm text-gray-300">Or call us directly:</p>
+                  <p className="text-sm text-gray-300">{t('info.orCallDirectly', { ns: 'contact' })}</p>
                   <p className="text-white font-semibold mt-1">{siteInfo.phone}</p>
                 </div>
               </div>
 
               {/* Contact Info */}
               <div className="bg-accent/10 rounded-xl p-6">
-                <h4 className="font-heading font-bold text-primary mb-2">Contact Us</h4>
+                <h4 className="font-heading font-bold text-primary mb-2">{tc('footer.contactUs')}</h4>
                 <p className="text-sm text-gray-600 mb-2">{siteInfo.email}</p>
                 <p className="text-sm text-gray-600">{siteInfo.hours}</p>
               </div>

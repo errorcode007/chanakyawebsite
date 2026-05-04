@@ -1,21 +1,24 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { siteInfo } from '@/lib/content'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/practice-areas', label: 'Practice Areas' },
-  { href: '/team', label: 'Team' },
-  { href: '/testimonials', label: 'Testimonials' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', labelKey: 'nav.home' },
+  { href: '/about', labelKey: 'nav.about' },
+  { href: '/practice-areas', labelKey: 'nav.practiceAreas' },
+  { href: '/team', labelKey: 'nav.team' },
+  { href: '/testimonials', labelKey: 'nav.testimonials' },
+  { href: '/blog', labelKey: 'nav.blog' },
+  { href: '/contact', labelKey: 'nav.contact' },
 ]
 
 export default function Navbar() {
   const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t } = useTranslation('common')
 
   const isActive = (href: string) => {
     if (href === '/') return router.pathname === '/'
@@ -55,11 +58,12 @@ export default function Navbar() {
                     : 'text-gray-300 hover:text-accent hover:bg-white/5'
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             ))}
-            <span className="ml-4 text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
-              Open until 10 PM
+            <LanguageSwitcher />
+            <span className="ml-2 text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+              {t('banner.openUntil')}
             </span>
           </div>
 
@@ -93,9 +97,12 @@ export default function Navbar() {
                     : 'text-gray-300 hover:text-accent'
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             ))}
+            <div className="px-3 py-3">
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </div>

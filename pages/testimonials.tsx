@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import { siteInfo, testimonials } from '@/lib/content'
 
 export default function Testimonials() {
+  const { t } = useTranslation('testimonials')
   return (
     <>
       <SEOHead
@@ -16,7 +18,7 @@ export default function Testimonials() {
         <Breadcrumb items={[{ label: 'Testimonials' }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-heading font-bold text-primary mb-4">Client Testimonials</h1>
+          <h1 className="text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h1>
           <div className="inline-flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full">
             <span className="text-accent text-lg">★</span>
             <span className="font-bold text-primary">{siteInfo.rating}</span>

@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "practiceAreas": "Practice Areas",
+    "team": "Team",
+    "testimonials": "Testimonials",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "legalDisclaimer": "Legal Disclaimer",
+    "disclaimerText": "As per the rules of the Bar Council of India, advocates are not permitted to solicit work or advertise. This website is meant solely for the purpose of information and not for the purpose of advertising.",
+    "readFullDisclaimer": "Read full disclaimer",
+    "allRightsReserved": "All rights reserved.",
+    "aboutText": "Providing quality legal services across Lucknow and Uttar Pradesh with integrity, expertise, and client-focused advocacy."
+  },
+  "buttons": {
+    "bookConsultation": "Book Consultation",
+    "bookFreeConsultation": "Book Free Consultation",
+    "ourServices": "Our Services",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "chatOnWhatsApp": "Chat on WhatsApp",
+    "quickResponse": "Quick response, usually within minutes"
+  },
+  "banner": {
+    "openUntil": "Open until 10 PM",
+    "scheduleConsultation": "Schedule a Free Consultation",
+    "consultationDesc": "Our experienced advocates are ready to help you with your legal matters. Contact us today for expert guidance.",
+    "callNow": "Call Now",
+    "whatsApp": "WhatsApp"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  }
+}

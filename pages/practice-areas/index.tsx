@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { m } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
@@ -12,6 +13,8 @@ const fadeInUp = {
 }
 
 export default function PracticeAreas() {
+  const { t } = useTranslation('practice-areas')
+  const { t: tc } = useTranslation('common')
   return (
     <>
       <SEOHead
@@ -24,10 +27,9 @@ export default function PracticeAreas() {
         <Breadcrumb items={[{ label: 'Practice Areas' }]} />
 
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-heading font-bold text-primary mb-4">Our Practice Areas</h1>
+          <h1 className="text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            We provide comprehensive legal services across 18 specialized areas of law,
-            serving individuals and businesses throughout Lucknow and Uttar Pradesh.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -49,7 +51,7 @@ export default function PracticeAreas() {
                 </h2>
                 <p className="text-gray-600 text-sm">{area.shortDescription}</p>
                 <span className="text-accent text-sm font-medium mt-3 inline-block">
-                  Learn More &rarr;
+                  {tc('buttons.readMore')} &rarr;
                 </span>
               </Link>
             </m.div>

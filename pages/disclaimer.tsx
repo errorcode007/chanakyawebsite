@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import { siteInfo } from '@/lib/content'
 
 export default function Disclaimer() {
+  const { t } = useTranslation('disclaimer')
   return (
     <>
       <SEOHead
@@ -14,7 +16,7 @@ export default function Disclaimer() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumb items={[{ label: 'Disclaimer' }]} />
 
-        <h1 className="text-4xl font-heading font-bold text-primary mb-8">Legal Disclaimer</h1>
+        <h1 className="text-4xl font-heading font-bold text-primary mb-8">{t('title')}</h1>
 
         <div className="prose max-w-none text-gray-600 space-y-6">
           <section>

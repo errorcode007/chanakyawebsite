@@ -1,0 +1,29 @@
+{
+  "title": "Contact Us",
+  "subtitle": "Schedule a consultation with our advocates. We are available Monday to Saturday until 10:00 PM.",
+  "form": {
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your full name",
+    "phone": "Phone",
+    "phonePlaceholder": "Your phone number",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "serviceNeeded": "Service Needed",
+    "selectService": "Select a service",
+    "other": "Other",
+    "message": "Message",
+    "messagePlaceholder": "Briefly describe your legal matter...",
+    "required": "*",
+    "disclaimer": "* Submitting this form does not establish an advocate-client relationship. Your information will be kept confidential.",
+    "errorMessage": "Something went wrong. Please try again or call us directly at {{phone}}."
+  },
+  "success": {
+    "title": "Message Sent Successfully",
+    "message": "We will get back to you within 24 hours. For urgent matters, please call us directly.",
+    "sendAnother": "Send another message"
+  },
+  "info": {
+    "getInTouch": "Get in Touch",
+    "orCallDirectly": "Or call us directly:"
+  }
+}

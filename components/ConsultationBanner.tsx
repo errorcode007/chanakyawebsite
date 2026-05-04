@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 import { siteInfo } from '@/lib/content'
 
 export default function ConsultationBanner() {
+  const { t } = useTranslation('common')
   const message = encodeURIComponent(
     `Hello, I would like to schedule a consultation with ${siteInfo.name}.`
   )
@@ -10,15 +12,14 @@ export default function ConsultationBanner() {
     <section className="bg-primary py-16">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
-          Need Legal Assistance?
+          {t('banner.scheduleConsultation')}
         </h2>
         <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-          Schedule a consultation with our experienced advocates. We are available
-          Monday to Saturday until 10:00 PM.
+          {t('banner.consultationDesc')}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/contact" className="btn-primary">
-            Book Free Consultation
+            {t('buttons.bookFreeConsultation')}
           </Link>
           <a
             href={`https://wa.me/${siteInfo.whatsapp}?text=${message}`}

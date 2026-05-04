@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
+import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
@@ -30,6 +31,8 @@ function formatDate(dateStr: string) {
 }
 
 export default function Blog({ posts, categories }: Props) {
+  const { t } = useTranslation('blog')
+  const { t: tc } = useTranslation('common')
   const [activeCategory, setActiveCategory] = useState<string>('All')
 
   const filtered = activeCategory === 'All'
@@ -47,9 +50,9 @@ export default function Blog({ posts, categories }: Props) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumb items={[{ label: 'Blog' }]} />
 
-        <h1 className="text-4xl font-heading font-bold text-primary mb-4">Legal Insights</h1>
+        <h1 className="text-4xl font-heading font-bold text-primary mb-4">{t('title')}</h1>
         <p className="text-gray-600 text-lg mb-8 max-w-2xl">
-          Articles and guides to help you understand Indian law and your legal rights.
+          {t('subtitle')}
         </p>
 
         {/* Category Filter Tabs */}
@@ -62,7 +65,7 @@ export default function Blog({ posts, categories }: Props) {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            All ({posts.length})
+            {t('allCategories')} ({posts.length})
           </button>
           {categories.map((cat) => {
             const count = posts.filter((p) => p.category === cat).length
@@ -97,8 +100,8 @@ export default function Blog({ posts, categories }: Props) {
               </h2>
               <p className="text-gray-600 text-sm mb-3 line-clamp-3">{post.excerpt}</p>
               <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                <span className="text-accent text-sm font-medium">Read More &rarr;</span>
-                <span className="text-xs text-gray-400">{post.readingTime} min read</span>
+                <span className="text-accent text-sm font-medium">{t('readMore')} &rarr;</span>
+                <span className="text-xs text-gray-400">{t('minRead', { time: post.readingTime })}</span>
               </div>
             </Link>
           ))}

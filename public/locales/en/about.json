@@ -1,0 +1,23 @@
+{
+  "title": "About Us",
+  "subtitle": "Learn about Chanakya Legal Chamber's commitment to providing expert legal services in Lucknow and across Uttar Pradesh.",
+  "history": {
+    "title": "Our History",
+    "content": "Chanakya Legal Chamber was established with a vision to provide accessible, high-quality legal services to the people of Lucknow and Uttar Pradesh. Named after the great strategist Chanakya, our chamber embodies the principles of wisdom, strategy, and justice in every case we handle."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "content": "To provide affordable, effective, and ethical legal representation to individuals and businesses, ensuring that justice is accessible to all regardless of their background."
+  },
+  "values": {
+    "title": "Our Values",
+    "integrity": "Integrity",
+    "integrityDesc": "We uphold the highest standards of professional ethics in all our dealings.",
+    "excellence": "Excellence",
+    "excellenceDesc": "We strive for excellence in legal research, strategy, and courtroom advocacy.",
+    "accessibility": "Accessibility",
+    "accessibilityDesc": "We believe quality legal services should be accessible to everyone.",
+    "transparency": "Transparency",
+    "transparencyDesc": "We keep our clients informed at every stage with honest communication."
+  }
+}
