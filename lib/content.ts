@@ -9,7 +9,7 @@ export const siteInfo = {
   rating: 4.3,
   reviewCount: 10,
   domain: 'https://chanakyalegalchamber.com',
-  mapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d80.95!3d26.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCrystal+City+Center+Lucknow!5e0!3m2!1sen!2sin!4v1700000000000',
+  mapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.5!2d80.925765!3d26.7805426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfb8916e317ed%3A0x7cbde44eb3e46146!2sChanakya+Legal+Chamber!5e0!3m2!1sen!2sin',
   socialLinks: {
     google: 'https://g.co/kgs/chanakyalegal',
   },

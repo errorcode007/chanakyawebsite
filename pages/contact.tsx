@@ -152,6 +152,7 @@ export default function Contact() {
                         {area.name}
                       </option>
                     ))}
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
