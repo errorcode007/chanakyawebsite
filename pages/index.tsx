@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { m } from 'framer-motion'
 import SEOHead from '@/components/SEOHead'
 import ConsultationBanner from '@/components/ConsultationBanner'
+import PracticeIcon from '@/components/PracticeIcon'
 import { siteInfo, practiceAreas, testimonials } from '@/lib/content'
 
 const fadeInUp = {
@@ -160,7 +161,7 @@ export default function Home() {
               {featuredAreas.map((area) => (
                 <m.div key={area.slug} variants={fadeInUp}>
                   <Link href={`/practice-areas/${area.slug}`} className="card block h-full hover:shadow-md">
-                    <span className="text-3xl mb-3 block">{area.icon}</span>
+                    <PracticeIcon slug={area.slug} className="w-8 h-8 mb-3" />
                     <h3 className="text-lg font-heading font-bold text-primary mb-2">{area.name}</h3>
                     <p className="text-gray-600 text-sm">{area.shortDescription}</p>
                   </Link>

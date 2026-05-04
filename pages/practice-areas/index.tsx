@@ -3,6 +3,7 @@ import { m } from 'framer-motion'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
+import PracticeIcon from '@/components/PracticeIcon'
 import { siteInfo, practiceAreas } from '@/lib/content'
 
 const fadeInUp = {
@@ -42,7 +43,7 @@ export default function PracticeAreas() {
                 href={`/practice-areas/${area.slug}`}
                 className="card block h-full hover:shadow-md group"
               >
-                <span className="text-3xl mb-3 block">{area.icon}</span>
+                <PracticeIcon slug={area.slug} className="w-8 h-8 mb-3" />
                 <h2 className="text-lg font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
                   {area.name}
                 </h2>

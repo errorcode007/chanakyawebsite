@@ -3,6 +3,7 @@ import Link from 'next/link'
 import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
+import PracticeIcon from '@/components/PracticeIcon'
 import { siteInfo, practiceAreas, PracticeArea } from '@/lib/content'
 
 interface Props {
@@ -49,7 +50,7 @@ export default function PracticeAreaPage({ area, relatedAreas }: Props) {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-4xl">{area.icon}</span>
+              <PracticeIcon slug={area.slug} className="w-10 h-10" />
               <h1 className="text-3xl lg:text-4xl font-heading font-bold text-primary">
                 {area.name}
               </h1>
@@ -89,7 +90,7 @@ export default function PracticeAreaPage({ area, relatedAreas }: Props) {
                     className="block card p-4 hover:shadow-sm"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-xl">{related.icon}</span>
+                      <PracticeIcon slug={related.slug} className="w-5 h-5" />
                       <span className="text-sm font-medium text-primary">{related.name}</span>
                     </div>
                   </Link>
