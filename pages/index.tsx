@@ -16,13 +16,14 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 }
 
-const jsonLd = {
+const legalServiceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: siteInfo.name,
   description: siteInfo.tagline,
   url: siteInfo.domain,
   telephone: siteInfo.phone,
+  email: siteInfo.email,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'LGF 51, Crystal City Center, below KFC, Opp. Lucknow Public Collegiate',
@@ -31,11 +32,64 @@ const jsonLd = {
     postalCode: '226012',
     addressCountry: 'IN',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 26.7805426,
+    longitude: 80.925765,
+  },
+  openingHours: 'Mo-Sa 09:00-22:00',
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: String(siteInfo.rating),
     reviewCount: String(siteInfo.reviewCount),
   },
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What legal services does Chanakya Legal Chamber offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer 18+ legal services including civil litigation, criminal defence, family law, corporate law, high court practice, consumer law, environmental law, and more in Lucknow, Uttar Pradesh.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Chanakya Legal Chamber located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our office is at LGF 51, Crystal City Center, below KFC, Opp. Lucknow Public Collegiate, Lucknow, Uttar Pradesh 226012.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the office hours?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We are open Monday to Saturday, 9:00 AM to 10:00 PM. You can also reach us via WhatsApp for quick responses.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer free consultations?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, we offer a free initial consultation. You can book one through our contact form, call us, or message us on WhatsApp.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which courts does Chanakya Legal Chamber practise in?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We practise in Lucknow District Courts, Allahabad High Court (Lucknow Bench), various tribunals including NCLT, NGT, and consumer forums, as well as other courts across Uttar Pradesh.',
+      },
+    },
+  ],
 }
 
 const stats = [
@@ -62,13 +116,13 @@ export default function Home({ latestPosts }: HomeProps) {
       <SEOHead
         title="Home"
         description={`${siteInfo.name} - ${siteInfo.tagline}. Expert legal services in civil, criminal, corporate, and family law. Located in Lucknow, UP.`}
-        jsonLd={jsonLd}
+        jsonLd={[legalServiceJsonLd, faqJsonLd]}
       />
 
       {/* Hero */}
-      <section className="bg-primary relative overflow-hidden">
+      <section className="bg-primary relative overflow-hidden min-h-[80svh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-36 w-full">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <m.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
               <m.p variants={fadeInUp} className="text-accent font-medium mb-4 tracking-wider uppercase text-sm">

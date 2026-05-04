@@ -116,6 +116,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
         description={post.metaDescription || post.excerpt}
         path={`/blog/${post.slug}`}
         jsonLd={articleJsonLd}
+        article={{ publishedTime: post.date, tags: post.tags }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

@@ -18,6 +18,12 @@ const jsonLd = {
     postalCode: '226012',
     addressCountry: 'IN',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 26.7805426,
+    longitude: 80.925765,
+  },
+  openingHours: 'Mo-Sa 09:00-22:00',
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: String(siteInfo.rating),
