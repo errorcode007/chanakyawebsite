@@ -6,7 +6,7 @@ import SEOHead from '@/components/SEOHead'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import PracticeIcon from '@/components/PracticeIcon'
 import { siteInfo, practiceAreas, testimonials } from '@/lib/content'
-import { getFeaturedPosts, BlogPost } from '@/lib/blog'
+import { getFeaturedPosts, getAllHindiPosts, BlogPost } from '@/lib/blog'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -105,15 +105,23 @@ const featuredTestimonials = testimonials.slice(0, 3)
 
 interface HomeProps {
   latestPosts: BlogPost[]
+  latestHiPosts: BlogPost[]
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  return { props: { latestPosts: getFeaturedPosts(3) } }
+  const hiPosts = getAllHindiPosts()
+  return {
+    props: {
+      latestPosts: getFeaturedPosts(3),
+      latestHiPosts: hiPosts.slice(0, 3),
+    },
+  }
 }
 
-export default function Home({ latestPosts }: HomeProps) {
-  const { t } = useTranslation('home')
+export default function Home({ latestPosts, latestHiPosts }: HomeProps) {
+  const { t, i18n } = useTranslation('home')
   const { t: tc } = useTranslation('common')
+  const activePosts = i18n.language === 'hi' ? latestHiPosts : latestPosts
   return (
     <>
       <SEOHead
@@ -303,7 +311,7 @@ export default function Home({ latestPosts }: HomeProps) {
             {t('blog.subtitle')}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {latestPosts.map((post) => (
+            {activePosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="card block group h-full">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-medium">

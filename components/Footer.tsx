@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse mb-4">
               <img
                 src={siteInfo.logo}
                 alt={siteInfo.name}
@@ -44,23 +44,23 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">{t('footer.contactUs')}</h4>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-start space-x-2">
+              <li className="flex items-start space-x-2 rtl:space-x-reverse">
                 <span className="mt-0.5">📍</span>
                 <span>{siteInfo.address}</span>
               </li>
-              <li className="flex items-center space-x-2">
+              <li className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span>📞</span>
                 <a href={`tel:${siteInfo.phone}`} className="hover:text-accent transition-colors">
                   {siteInfo.phone}
                 </a>
               </li>
-              <li className="flex items-center space-x-2">
+              <li className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span>✉️</span>
                 <a href={`mailto:${siteInfo.email}`} className="hover:text-accent transition-colors">
                   {siteInfo.email}
                 </a>
               </li>
-              <li className="flex items-center space-x-2">
+              <li className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span>🕐</span>
                 <span>{siteInfo.hours}</span>
               </li>

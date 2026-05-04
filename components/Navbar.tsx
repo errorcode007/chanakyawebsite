@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
               src={siteInfo.logo}
               alt={siteInfo.name}
@@ -47,7 +47,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 rtl:space-x-reverse">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -62,7 +62,7 @@ export default function Navbar() {
               </Link>
             ))}
             <LanguageSwitcher />
-            <span className="ml-2 text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+            <span className="ml-2 rtl:ml-0 rtl:mr-2 text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
               {t('banner.openUntil')}
             </span>
           </div>

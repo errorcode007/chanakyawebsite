@@ -1,4 +1,5 @@
 import { BlogPost, BlogCategory } from './blog/types'
+import { getAllHindiPosts, getHindiPostBySlug } from './blog-hi'
 
 // Import all blog posts
 import understandingCivilLitigation from './blog/understanding-civil-litigation-up-courts'
@@ -99,3 +100,18 @@ export function getAdjacentPosts(slug: string): { prev: BlogPost | null; next: B
     next: index > 0 ? sorted[index - 1] : null,
   }
 }
+
+/** Get localized posts — Hindi posts for 'hi', English for everything else */
+export function getLocalizedPosts(locale: string): BlogPost[] {
+  if (locale === 'hi') return getAllHindiPosts()
+  return getAllPosts()
+}
+
+/** Get localized post by slug */
+export function getLocalizedPost(slug: string, locale: string): BlogPost | undefined {
+  if (locale === 'hi') return getHindiPostBySlug(slug) || getPostBySlug(slug)
+  return getPostBySlug(slug)
+}
+
+// Re-export for use in blog-hi
+export { getAllHindiPosts, getHindiPostBySlug }

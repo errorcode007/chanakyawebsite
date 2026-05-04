@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "ہوم",
+    "about": "ہمارے بارے میں",
+    "practiceAreas": "شعبہ جات",
+    "team": "ہماری ٹیم",
+    "testimonials": "تعریفیں",
+    "blog": "بلاگ",
+    "contact": "رابطہ کریں"
+  },
+  "footer": {
+    "quickLinks": "فوری لنکس",
+    "contactUs": "رابطہ کریں",
+    "legalDisclaimer": "قانونی دستبرداری",
+    "disclaimerText": "بار کونسل آف انڈیا کے قواعد کے مطابق، وکلاء کو کام کی درخواست کرنے یا اشتہار دینے کی اجازت نہیں ہے۔ یہ ویب سائٹ صرف معلومات کے مقصد سے ہے، اشتہار کے لیے نہیں۔",
+    "readFullDisclaimer": "مکمل دستبرداری پڑھیں",
+    "allRightsReserved": "جملہ حقوق محفوظ ہیں۔",
+    "aboutText": "لکھنؤ اور اتر پردیش میں دیانتداری، مہارت اور مؤکل پر مرکوز وکالت کے ساتھ معیاری قانونی خدمات فراہم کرنا۔"
+  },
+  "buttons": {
+    "bookConsultation": "مشاورت بک کریں",
+    "bookFreeConsultation": "مفت مشاورت بک کریں",
+    "ourServices": "ہماری خدمات",
+    "readMore": "مزید پڑھیں",
+    "viewAll": "سب دیکھیں",
+    "sendMessage": "پیغام بھیجیں",
+    "sending": "بھیجا جا رہا ہے...",
+    "chatOnWhatsApp": "WhatsApp پر چیٹ کریں",
+    "quickResponse": "فوری جواب، عموماً چند منٹوں میں"
+  },
+  "banner": {
+    "openUntil": "رات 10 بجے تک کھلا",
+    "scheduleConsultation": "مفت مشاورت شیڈول کریں",
+    "consultationDesc": "ہمارے تجربہ کار وکلاء آپ کے قانونی معاملات میں مدد کے لیے تیار ہیں۔ ماہرانہ رہنمائی کے لیے آج ہی رابطہ کریں۔",
+    "callNow": "ابھی کال کریں",
+    "whatsApp": "WhatsApp"
+  },
+  "languageSwitcher": {
+    "label": "زبان"
+  }
+}

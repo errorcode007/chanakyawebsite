@@ -7,10 +7,11 @@ import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import { siteInfo } from '@/lib/content'
-import { getAllPosts, getRelatedPosts, getAdjacentPosts, BlogPost } from '@/lib/blog'
+import { getAllPosts, getRelatedPosts, getAdjacentPosts, getHindiPostBySlug, BlogPost } from '@/lib/blog'
 
 interface Props {
   post: BlogPost
+  hiPost: BlogPost | null
   relatedPosts: BlogPost[]
   prevPost: BlogPost | null
   nextPost: BlogPost | null
@@ -28,10 +29,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const post = posts.find((p) => p.slug === params?.slug)
   if (!post) return { notFound: true }
 
+  const hiPost = getHindiPostBySlug(post.slug) || null
   const relatedPosts = getRelatedPosts(post.slug, 3)
   const { prev, next } = getAdjacentPosts(post.slug)
 
-  return { props: { post, relatedPosts, prevPost: prev, nextPost: next } }
+  return { props: { post, hiPost, relatedPosts, prevPost: prev, nextPost: next } }
 }
 
 function formatDate(dateStr: string) {
@@ -93,9 +95,12 @@ function ShareButtons({ title, slug }: { title: string; slug: string }) {
   )
 }
 
-export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }: Props) {
-  const { t } = useTranslation('blog')
+export default function BlogPostPage({ post, hiPost, relatedPosts, prevPost, nextPost }: Props) {
+  const { t, i18n } = useTranslation('blog')
   const { t: tc } = useTranslation('common')
+
+  // Show Hindi post when language is Hindi and translation exists
+  const activePost = i18n.language === 'hi' && hiPost ? hiPost : post
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -126,7 +131,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
         <Breadcrumb
           items={[
             { label: 'Blog', href: '/blog' },
-            { label: post.title },
+            { label: activePost.title },
           ]}
         />
 
@@ -136,25 +141,25 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
             <header className="mb-8">
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-medium">
-                  {post.category}
+                  {activePost.category}
                 </span>
-                <span className="text-sm text-gray-500">{formatDate(post.date)}</span>
-                <span className="text-sm text-gray-400">{post.readingTime} min read</span>
+                <span className="text-sm text-gray-500">{formatDate(activePost.date)}</span>
+                <span className="text-sm text-gray-400">{activePost.readingTime} min read</span>
               </div>
               <h1 className="text-3xl lg:text-4xl font-heading font-bold text-primary mb-4">
-                {post.title}
+                {activePost.title}
               </h1>
-              <p className="text-gray-600 text-lg">{post.excerpt}</p>
+              <p className="text-gray-600 text-lg">{activePost.excerpt}</p>
             </header>
 
             <div className="prose max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent prose-strong:text-primary prose-li:text-gray-600">
-              <ReactMarkdown>{post.body}</ReactMarkdown>
+              <ReactMarkdown>{activePost.body}</ReactMarkdown>
             </div>
 
             {/* Tags */}
-            {post.tags.length > 0 && (
+            {activePost.tags.length > 0 && (
               <div className="mt-8 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
+                {activePost.tags.map((tag) => (
                   <span key={tag} className="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full">
                     {tag}
                   </span>
@@ -167,7 +172,7 @@ export default function BlogPostPage({ post, relatedPosts, prevPost, nextPost }:
               <p className="text-sm text-gray-500">
                 {t('publishedBy')} <span className="font-medium text-primary">{siteInfo.name}</span>
               </p>
-              <ShareButtons title={post.title} slug={post.slug} />
+              <ShareButtons title={activePost.title} slug={post.slug} />
             </div>
 
             {/* Prev/Next Navigation */}

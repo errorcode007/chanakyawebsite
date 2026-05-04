@@ -6,10 +6,11 @@ import SEOHead from '@/components/SEOHead'
 import Breadcrumb from '@/components/Breadcrumb'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import { siteInfo } from '@/lib/content'
-import { getAllPosts, getCategories, BlogPost, BlogCategory } from '@/lib/blog'
+import { getAllPosts, getCategories, getAllHindiPosts, BlogPost, BlogCategory } from '@/lib/blog'
 
 interface Props {
   posts: BlogPost[]
+  hiPosts: BlogPost[]
   categories: BlogCategory[]
 }
 
@@ -17,6 +18,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       posts: getAllPosts(),
+      hiPosts: getAllHindiPosts(),
       categories: getCategories(),
     },
   }
@@ -30,14 +32,17 @@ function formatDate(dateStr: string) {
   })
 }
 
-export default function Blog({ posts, categories }: Props) {
-  const { t } = useTranslation('blog')
+export default function Blog({ posts, hiPosts, categories }: Props) {
+  const { t, i18n } = useTranslation('blog')
   const { t: tc } = useTranslation('common')
   const [activeCategory, setActiveCategory] = useState<string>('All')
 
+  // Use Hindi posts when language is Hindi, fall back to English
+  const activePosts = i18n.language === 'hi' ? hiPosts : posts
+
   const filtered = activeCategory === 'All'
-    ? posts
-    : posts.filter((p) => p.category === activeCategory)
+    ? activePosts
+    : activePosts.filter((p) => p.category === activeCategory)
 
   return (
     <>
@@ -65,10 +70,10 @@ export default function Blog({ posts, categories }: Props) {
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
-            {t('allCategories')} ({posts.length})
+            {t('allCategories')} ({activePosts.length})
           </button>
           {categories.map((cat) => {
-            const count = posts.filter((p) => p.category === cat).length
+            const count = activePosts.filter((p) => p.category === cat).length
             return (
               <button
                 key={cat}

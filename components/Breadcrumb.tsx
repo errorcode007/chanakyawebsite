@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 import { siteInfo } from '@/lib/content'
 
 interface BreadcrumbItem {
@@ -35,6 +36,7 @@ function getBreadcrumbJsonLd(items: BreadcrumbItem[]) {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   const jsonLd = getBreadcrumbJsonLd(items)
+  const { t } = useTranslation('common')
 
   return (
     <>
@@ -43,14 +45,14 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-6">
-        <ol className="flex items-center space-x-2">
+        <ol className="flex items-center space-x-2 rtl:space-x-reverse">
           <li>
             <Link href="/" className="hover:text-accent transition-colors">
-              Home
+              {t('nav.home')}
             </Link>
           </li>
           {items.map((item, i) => (
-            <li key={i} className="flex items-center space-x-2">
+            <li key={i} className="flex items-center space-x-2 rtl:space-x-reverse">
               <span>/</span>
               {item.href ? (
                 <Link href={item.href} className="hover:text-accent transition-colors">

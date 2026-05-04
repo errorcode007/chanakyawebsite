@@ -51,12 +51,12 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50 min-w-[140px]">
+        <div className="absolute right-0 rtl:right-auto rtl:left-0 top-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50 min-w-[140px]">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => switchLanguage(lang.code, lang.dir)}
-              className={`w-full text-left px-4 py-2 text-sm hover:bg-accent/10 transition-colors ${
+              className={`w-full text-left rtl:text-right px-4 py-2 text-sm hover:bg-accent/10 transition-colors ${
                 lang.code === i18n.language ? 'text-accent font-medium' : 'text-gray-700'
               }`}
             >
