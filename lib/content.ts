@@ -3,7 +3,7 @@ export const siteInfo = {
   tagline: 'Lighting The Path To Justice',
   logo: 'https://lh3.googleusercontent.com/a-/ALV-UjVXTpMlAwgNqUrTGPaKxKjb196CiWQOVDTvz0hUSJdoAYyHBoM=w1470',
   phone: '9797177212',
-  whatsapp: '919797177212',
+  whatsapp: '919792177212',
   email: 'info@chanakyalegalchamber.com',
   address: 'LGF 51, Crystal City Center, below KFC, Opp. Lucknow Public Collegiate, Lucknow, Uttar Pradesh – 226012',
   hours: 'Mon–Sat: 9:00 AM – 10:00 PM',
